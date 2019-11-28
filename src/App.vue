@@ -3,7 +3,7 @@
     <div id="nav">
       <b-nav>
         <b-nav-item to="/">Home</b-nav-item>
-        <b-nav-item to="/about">About</b-nav-item>
+        <b-nav-item to="/help">Help</b-nav-item>
       </b-nav>
     </div>
     <router-view />
@@ -11,5 +11,5 @@
 </template>
 
 <style lang="scss">
-@import "./assets/scss/style.scss";
+@import './assets/scss/style.scss';
 </style>

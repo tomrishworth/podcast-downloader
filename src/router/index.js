@@ -21,6 +21,11 @@ const routes = [
   {
     path: '/podcast/:id',
     component: () => import('../views/Podcast.vue')
+  },
+  {
+    path: '/help',
+    name: 'help',
+    component: () => import('../views/Help.vue')
   }
 ];
 
