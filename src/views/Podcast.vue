@@ -121,7 +121,6 @@ export default {
         });
     },
     onCopy() {
-      console.log('Copied');
       this.$bvToast.toast('Paste this into your terminal to download', {
         variant: 'success',
         title: 'URL copied',
@@ -133,7 +132,6 @@ export default {
     }
   },
   mounted() {
-    console.log('Mounted');
     this.loading = true;
     this.getPodcastFeed();
   }
