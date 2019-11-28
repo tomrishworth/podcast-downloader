@@ -15,12 +15,14 @@
           details.
         </p>
       </b-alert>
-      <div v-if="loading" class="d-flex justify-content-center pt-4">
-        <b-spinner variant="secondary" label="Spinning"></b-spinner>
+      <div v-if="loading" class="d-flex flex-column align-items-center py-4">
+        <div class="mb-2"><b-spinner variant="secondary" label="Spinning"></b-spinner></div>
+        <div><small>Loading episodes</small></div>
       </div>
 
       <b-table
         id="episodes"
+        v-if="!loading"
         :fields="fields"
         :items="items"
         :per-page="perPage"
@@ -43,7 +45,7 @@
           >
         </template>
       </b-table>
-      <div class="py-5 d-flex justify-content-center">
+      <div v-if="episodes" class="py-5 d-flex justify-content-center">
         <b-pagination
           v-if="episodes.length >= perPage"
           v-model="currentPage"
@@ -116,8 +118,8 @@ export default {
           this.podcast = response.data.results[0];
           new Parser().parseURL(`https://cors-anywhere.herokuapp.com/${this.podcast.feedUrl}`).then(response => {
             this.episodes = response.items;
+            this.loading = false;
           });
-          this.loading = false;
         });
     },
     onCopy() {
