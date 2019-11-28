@@ -19,12 +19,17 @@
     <div class="container-fluid" v-if="podcasts">
       <h1 class="h4 mb-4">Top Podcasts</h1>
       <div class="row justify-content-start">
-        <router-link :to="`podcast/${podcast.id}`" class="col podcast" v-for="podcast in podcasts" :key="podcast.id">
-          <div>
+        <router-link
+          :to="`podcast/${podcast.id}`"
+          class="col podcast mb-4 text-body"
+          v-for="podcast in podcasts"
+          :key="podcast.id"
+        >
+          <div class="mb-2">
             <img :src="podcast.artworkUrl100" />
           </div>
-          <div>{{ podcast.name }}</div>
-          <div>{{ podcast.artistName }}</div>
+          <div class="font-weight-bold">{{ podcast.name }}</div>
+          <div class="text-muted">{{ podcast.artistName }}</div>
         </router-link>
       </div>
     </div>
@@ -70,3 +75,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.podcast {
+  width: 200px;
+}
+</style>

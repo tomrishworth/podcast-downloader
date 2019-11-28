@@ -10,7 +10,7 @@
           In Apple Podcast app, find the copy link icon. The copied url will have the podcast Id at the end. e.g.
           https://podcasts.apple.com/nz/podcast/slow-burn/id1315040130.
         </p>
-        <p><code>1315040130</code> is the ID in the example</p>
+        <p><code>1315040130</code> is the ID in this example</p>
         <p>Paste this into the form on the homepage</p>
       </div>
       <div><img class="img-fluid" src="https://s3.amazonaws.com/tom_rishworth/get-podcast-id.png" /></div>

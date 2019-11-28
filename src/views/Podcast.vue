@@ -28,9 +28,15 @@
         :per-page="perPage"
         :current-page="currentPage"
         striped
-        small
         bordered
       >
+        <template v-slot:cell(title)="data">
+          <div class="text-muted text-uppercase font-weight-bold text-xs">
+            <span v-html="date(data.item.isoDate)"></span>
+          </div>
+          <div class="font-weight-semibold">{{ data.item.title }}</div>
+          <div class="text-sm text-muted" v-html="data.item.content"></div>
+        </template>
         <template v-slot:cell(download)="data">
           <b-btn
             size="sm"
@@ -63,6 +69,7 @@ import axios from 'axios';
 import Parser from 'rss-parser';
 import slugify from '@sindresorhus/slugify';
 import { format } from 'date-fns';
+import { parseISO } from 'date-fns';
 
 export default {
   name: 'Podcast',
@@ -75,9 +82,7 @@ export default {
       currentPage: 1,
       fields: [
         {
-          key: 'title',
-          thClass: 'w-200px',
-          tdClass: 'w-200px'
+          key: 'title'
         },
         // {
         //   key: "time",
@@ -86,8 +91,8 @@ export default {
         // },
         {
           key: 'download',
-          thClass: 'w-100px',
-          tdClass: 'w-100px'
+          thClass: 'w-200px',
+          tdClass: 'w-200px'
         }
       ]
     };
@@ -109,7 +114,7 @@ export default {
       return slugify(value);
     },
     date(value) {
-      return format(value, 'D MMM YYYY');
+      return format(parseISO(value), 'd MMM yyyy');
     },
     getPodcastFeed() {
       axios

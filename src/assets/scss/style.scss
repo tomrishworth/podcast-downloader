@@ -2,3 +2,23 @@
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
 
 @import '~bootstrap/dist/css/bootstrap.css';
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.text-sm {
+  font-size: 0.9rem;
+}
+
+.font-weight-semibold {
+  font-weight: 500;
+}
+
+.w-100px {
+  width: 100px;
+}
+
+.w-200px {
+  width: 200px;
+}
