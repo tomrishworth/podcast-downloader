@@ -35,7 +35,7 @@
             <span v-html="date(data.item.isoDate)"></span>
           </div>
           <div class="font-weight-semibold">{{ data.item.title }}</div>
-          <div class="text-sm text-muted" v-html="data.item.content"></div>
+          <div class="text-sm text-muted" v-html="data.item.contentSnippet"></div>
         </template>
         <template v-slot:cell(download)="data">
           <b-btn
@@ -84,11 +84,6 @@ export default {
         {
           key: 'title'
         },
-        // {
-        //   key: "time",
-        //   thClass: "w-100px",
-        //   tdClass: "w-100px"
-        // },
         {
           key: 'download',
           thClass: 'w-200px',
@@ -130,7 +125,7 @@ export default {
     onCopy() {
       this.$bvToast.toast('Paste this into your terminal to download', {
         variant: 'success',
-        title: 'URL copied',
+        title: 'URL copied!',
         autoHideDelay: 5000
       });
     },
