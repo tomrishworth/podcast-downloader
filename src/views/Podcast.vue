@@ -119,7 +119,7 @@ export default {
     },
     getPodcastFeed() {
       axios
-        .get(`https:cors.bridged.cc/https://itunes.apple.com/lookup?id=${this.$route.params.id}`)
+        .get(`https://cors.bridged.cc/https://itunes.apple.com/lookup?id=${this.$route.params.id}`)
         .then((response) => {
           this.podcast = response.data.results[0];
           new Parser().parseURL(`https://cors.bridged.cc/${this.podcast.feedUrl}`).then((response) => {

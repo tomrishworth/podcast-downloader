@@ -55,7 +55,9 @@ export default {
   methods: {
     getStuff() {
       return axios
-        .get(`https:cors.bridged.cc/https://rss.itunes.apple.com/api/v1/NZL/podcasts/top-podcasts/all/48/explicit.json`)
+        .get(
+          `https://cors.bridged.cc/https://rss.itunes.apple.com/api/v1/NZL/podcasts/top-podcasts/all/48/explicit.json`
+        )
         .then((response) => {
           this.podcasts = response.data.feed.results;
           this.loading = false;
