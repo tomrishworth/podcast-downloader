@@ -34,7 +34,13 @@
           <div class="text-muted text-uppercase font-weight-bold text-xs">
             <span v-html="date(data.item.isoDate)"></span>
           </div>
-          <div class="font-weight-semibold">{{ data.item.title }}</div>
+          <div class="font-weight-semibold">
+            {{ data.item.title }} -
+            <span class="badge badge-dark mr-1" v-if="data.item.itunes.season"
+              >Season:{{ data.item.itunes.season }}</span
+            >
+            <span class="badge badge-dark" v-if="data.item.itunes.episode">Episode:{{ data.item.itunes.episode }}</span>
+          </div>
           <div class="text-sm text-muted" v-html="data.item.contentSnippet"></div>
         </template>
         <template v-slot:cell(download)="data">
@@ -82,14 +88,14 @@ export default {
       currentPage: 1,
       fields: [
         {
-          key: 'title'
+          key: 'title',
         },
         {
           key: 'download',
           thClass: 'w-200px',
-          tdClass: 'w-200px'
-        }
-      ]
+          tdClass: 'w-200px',
+        },
+      ],
     };
   },
   computed: {
@@ -102,7 +108,7 @@ export default {
       } else {
         return 0;
       }
-    }
+    },
   },
   methods: {
     episodeSlug(value) {
@@ -113,10 +119,10 @@ export default {
     },
     getPodcastFeed() {
       axios
-        .get(`https://cors-anywhere.herokuapp.com/https://itunes.apple.com/lookup?id=${this.$route.params.id}`)
-        .then(response => {
+        .get(`https:cors.bridged.cc/https://itunes.apple.com/lookup?id=${this.$route.params.id}`)
+        .then((response) => {
           this.podcast = response.data.results[0];
-          new Parser().parseURL(`https://cors-anywhere.herokuapp.com/${this.podcast.feedUrl}`).then(response => {
+          new Parser().parseURL(`https://cors.bridged.cc/${this.podcast.feedUrl}`).then((response) => {
             this.episodes = response.items;
             this.loading = false;
           });
@@ -126,16 +132,16 @@ export default {
       this.$bvToast.toast('Paste this into your terminal to download', {
         variant: 'success',
         title: 'URL copied!',
-        autoHideDelay: 5000
+        autoHideDelay: 5000,
       });
     },
     onError() {
       alert('Error');
-    }
+    },
   },
   mounted() {
     this.loading = true;
     this.getPodcastFeed();
-  }
+  },
 };
 </script>

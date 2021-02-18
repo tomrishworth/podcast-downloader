@@ -49,16 +49,14 @@ export default {
     return {
       id: null,
       podcasts: null,
-      loading: false
+      loading: false,
     };
   },
   methods: {
     getStuff() {
       return axios
-        .get(
-          `https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/NZL/podcasts/top-podcasts/all/48/explicit.json`
-        )
-        .then(response => {
+        .get(`https:cors.bridged.cc/https://rss.itunes.apple.com/api/v1/NZL/podcasts/top-podcasts/all/48/explicit.json`)
+        .then((response) => {
           this.podcasts = response.data.feed.results;
           this.loading = false;
         });
@@ -67,12 +65,12 @@ export default {
       if (this.id != null) {
         this.$router.push({ path: `podcast/${this.id}` });
       }
-    }
+    },
   },
   mounted() {
     this.loading = true;
     this.getStuff();
-  }
+  },
 };
 </script>
 
